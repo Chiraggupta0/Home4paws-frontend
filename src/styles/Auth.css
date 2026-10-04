@@ -1,0 +1,184 @@
+/* ─── Auth split layout ───────────────────────────────────── */
+.auth-page {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: var(--nav-height);
+}
+
+/* Left panel */
+.auth-panel-left {
+  background: linear-gradient(170deg, #FFF6EC 0%, #FFE8CC 55%, #FFDBB0 100%);
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: clamp(40px,6vw,72px);
+  position: relative; overflow: hidden;
+}
+.auth-panel-left::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 80% 90%, rgba(224,90,28,.10) 0%, transparent 55%),
+    radial-gradient(circle at 10% 10%, rgba(244,167,53,.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+.auth-left-top { position:relative; z-index:1; }
+.auth-left-brand { display:none; }
+.auth-left-top { position: relative; z-index: 1; }
+
+.auth-left-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(224,90,28,.1);
+  border: 1px solid rgba(224,90,28,.2);
+  color: #C85A0A;
+  font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 999px;
+  margin-bottom: 28px;
+}
+
+.auth-left-headline {
+  font-size: clamp(2rem,2.8vw,2.8rem);
+  color: #2C1810;
+  line-height: 1.18;
+  margin-bottom: 16px;
+  font-family: 'Playfair Display', serif;
+}
+.auth-left-headline em { color: #E05A1C; font-style: italic; }
+.auth-left-sub { font-size: .92rem; color: rgba(44,24,16,.55); line-height: 1.75; max-width: 300px; }
+
+.auth-left-stats {
+  position: relative; z-index: 1;
+  display: flex; gap: 28px; margin-top: 36px;
+}
+.auth-left-stat { display: flex; flex-direction: column; gap: 2px; }
+.auth-left-stat strong { font-size: 1.4rem; font-weight: 800; color: #2C1810; }
+.auth-left-stat span { font-size: .72rem; color: rgba(44,24,16,.45); text-transform: uppercase; letter-spacing: .05em; }
+
+.auth-left-paws {
+  position: relative; z-index: 1;
+  font-size: 1rem; letter-spacing: 10px; opacity: .2;
+}
+
+/* ── Animated dog ───────────────────────────────────── */
+.auth-dog-wrap {
+  position: absolute;
+  bottom: 0; right: -20px;
+  width: clamp(220px, 40%, 300px);
+  z-index: 2;
+  transform-origin: bottom center;
+  animation: dogFloat 4s ease-in-out infinite;
+}
+
+.auth-dog-wrap img {
+  width: 100%;
+  display: block;
+  transform-origin: bottom center;
+  animation: dogBreath 3.2s ease-in-out infinite, dogTilt 5s ease-in-out infinite;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 12px 28px rgba(180,100,30,.25));
+}
+
+@keyframes dogFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes dogBreath {
+  0%, 100% { transform: scaleY(1)    scaleX(1); }
+  40%       { transform: scaleY(1.02) scaleX(.99); }
+  60%       { transform: scaleY(1.02) scaleX(.99); }
+}
+
+@keyframes dogTilt {
+  0%,  100% { transform: rotate(0deg); }
+  20%        { transform: rotate(1.2deg); }
+  50%        { transform: rotate(0deg); }
+  75%        { transform: rotate(-0.8deg); }
+}
+
+/* Right panel */
+.auth-panel-right {
+  display:flex; align-items:center; justify-content:center;
+  padding:clamp(32px,5vw,72px) clamp(28px,6vw,80px);
+  background:var(--bg); overflow-y:auto;
+}
+.auth-form-box { width:100%; max-width:400px; }
+
+/* Headings */
+.auth-title { font-size:clamp(1.6rem,2.5vw,2.1rem); color:var(--dark); margin-bottom:5px; }
+.auth-sub   { font-size:.9rem; color:var(--text-muted); margin-bottom:28px; }
+
+/* Form */
+.auth-form { display:flex; flex-direction:column; }
+.auth-submit { width:100%; padding:14px; font-size:.95rem; margin-top:8px; justify-content:center; }
+
+/* Footer link */
+.auth-footer-link { text-align:center; margin-top:22px; font-size:.88rem; color:var(--text-muted); }
+.auth-footer-link a { color:var(--primary); font-weight:700; }
+.auth-footer-link a:hover { text-decoration:underline; }
+
+/* Google button */
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  background: #fff;
+  color: #3c4043;
+  font-size: .95rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: box-shadow .2s, border-color .2s;
+}
+.btn-google:hover { box-shadow: 0 2px 8px rgba(0,0,0,.12); border-color: #aaa; }
+
+/* Divider */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 16px;
+  color: var(--text-muted);
+  font-size: .82rem;
+}
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Success card */
+.auth-card--success {
+  display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px;
+  background:var(--white); border-radius:var(--radius-xl); padding:56px 40px;
+  box-shadow:var(--shadow-lg); max-width:400px; margin:auto;
+}
+.auth-success-icon { font-size:4rem; animation:successBounce .6s var(--ease-spring); }
+@keyframes successBounce { 0%{transform:scale(0)} 60%{transform:scale(1.2)} 100%{transform:scale(1)} }
+
+/* Role picker */
+.role-picker { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.role-option {
+  display:flex; flex-direction:column; gap:4px; padding:14px;
+  border-radius:var(--radius-md); border:2px solid var(--border);
+  cursor:pointer; transition:all .2s; background:var(--white);
+}
+.role-option:hover          { border-color:var(--primary-light); }
+.role-option--active        { border-color:var(--primary); background:rgba(224,90,28,.04); box-shadow:0 0 0 3px rgba(224,90,28,.1); }
+.role-option__label         { font-weight:700; font-size:.9rem; color:var(--dark); }
+.role-option__desc          { font-size:.76rem; color:var(--text-muted); }
+
+/* Mobile */
+@media (max-width:768px) {
+  .auth-page { grid-template-columns:1fr; }
+  .auth-panel-left { padding:36px 28px 32px; }
+  .auth-left-paws  { margin-top:32px; }
+  .auth-panel-right{ padding:40px 24px; }
+  .role-picker     { grid-template-columns:1fr; }
+}

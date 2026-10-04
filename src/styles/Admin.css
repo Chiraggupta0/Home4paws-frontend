@@ -1,0 +1,108 @@
+.admin-page { min-height: 100vh; padding-top: var(--nav-height); }
+
+.admin-header {
+  background: linear-gradient(135deg, #1A1A2E 0%, #2D1A12 50%, #7B3010 100%);
+  padding: clamp(40px,6vw,72px) 0 clamp(32px,4vw,48px);
+}
+.admin-title { font-size: clamp(1.8rem,4vw,2.6rem); color: #fff; margin: 6px 0; font-family: 'Playfair Display', serif; }
+.admin-sub   { color: rgba(255,255,255,.55); font-size: .95rem; }
+
+.admin-body { padding: 0 0 80px; }
+
+/* Tabs — floating card that overlaps the header cleanly */
+.admin-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  background: #fff;
+  padding: 10px;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.10);
+  margin-top: -28px;     /* lift up to overlap header edge */
+  margin-bottom: 28px;
+  position: relative; z-index: 2;
+}
+.admin-tab {
+  padding: 9px 20px; border-radius: 999px;
+  font-size: .88rem; font-weight: 600;
+  background: #f2f2f2; color: #555; border: none; cursor: pointer;
+  transition: all .15s;
+}
+.admin-tab:hover { background: #e8e8e8; }
+.admin-tab--active { background: #111; color: #fff; }
+
+/* Stat cards */
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+.admin-stat {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 22px 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+.admin-stat--accent {
+  background: linear-gradient(135deg, var(--primary), #f5a623);
+  border: none;
+}
+.admin-stat__value { font-size: 1.9rem; font-weight: 800; color: #111; line-height: 1; }
+.admin-stat--accent .admin-stat__value { color: #fff; }
+.admin-stat__label { font-size: .8rem; color: #888; margin-top: 8px; font-weight: 500; }
+.admin-stat--accent .admin-stat__label { color: rgba(255,255,255,.85); }
+
+/* Clickable stat cards */
+.admin-stat--clickable { cursor: pointer; position: relative; transition: box-shadow .18s; }
+.admin-stat--clickable:hover { box-shadow: 0 10px 30px rgba(0,0,0,.12); }
+.admin-stat__arrow {
+  position: absolute; top: 18px; right: 18px;
+  font-size: 1rem; color: #ccc; opacity: 0;
+  transition: opacity .18s, transform .18s;
+}
+.admin-stat--clickable:hover .admin-stat__arrow { opacity: 1; transform: translateX(3px); }
+.admin-stat--accent .admin-stat__arrow { color: rgba(255,255,255,.9); }
+
+/* Back button */
+.admin-back {
+  background: rgba(255,255,255,.15); color: #fff; border: none;
+  padding: 7px 14px; border-radius: 8px; font-size: .85rem; cursor: pointer;
+  margin-bottom: 16px; transition: background .15s;
+}
+.admin-back:hover { background: rgba(255,255,255,.28); }
+
+/* Chart card */
+.admin-chart-card {
+  background: #fff; border: 1px solid #eee; border-radius: 18px;
+  padding: 32px; margin-top: 24px;
+  box-shadow: 0 2px 14px rgba(0,0,0,.05);
+}
+.admin-chart-title {
+  font-size: .8rem; text-transform: uppercase; letter-spacing: .06em;
+  color: #999; margin-bottom: 28px; font-weight: 700;
+}
+
+/* Tables */
+.admin-table-wrap {
+  background: #fff; border: 1px solid #eee; border-radius: 16px;
+  overflow-x: auto; box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+.admin-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+.admin-table th {
+  text-align: left; padding: 14px 18px;
+  font-size: .72rem; text-transform: uppercase; letter-spacing: .05em;
+  color: #999; border-bottom: 1px solid #f0f0f0; white-space: nowrap;
+}
+.admin-table td { padding: 14px 18px; border-bottom: 1px solid #f6f6f6; color: #333; }
+.admin-table tr:last-child td { border-bottom: none; }
+.admin-table tr:hover td { background: #fafafa; }
+
+.admin-role-tag {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: #f0f0f0; font-size: .72rem; font-weight: 700; color: #555;
+}
+.admin-del {
+  background: #fff2f1; color: #d93025; border: none;
+  padding: 6px 14px; border-radius: 8px; font-size: .8rem; font-weight: 600;
+  cursor: pointer; transition: background .15s;
+}
+.admin-del:hover { background: #ffe0de; }
